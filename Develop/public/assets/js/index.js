@@ -29,6 +29,7 @@ const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
   });
@@ -118,10 +119,12 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
-  let jsonNotes = await notes.json();
+  let jsonNotes = await notes.json().then(x =>{return x.note});
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
+
+  console.log(jsonNotes)
 
   let noteListItems = [];
 
