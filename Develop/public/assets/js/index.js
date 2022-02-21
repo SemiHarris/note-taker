@@ -124,8 +124,6 @@ const renderNoteList = async (notes) => {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
 
-  console.log(jsonNotes)
-
   let noteListItems = [];
 
   // Returns HTML element with or without a delete button
@@ -182,5 +180,5 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
-
++
 getAndRenderNotes();

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const note = require('./Develop/notes/notes.json');
+const {note} = require('./Develop/notes/notes.json');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,7 +32,9 @@ app.get('/notes', (req, res) => {
 
 app.get('/api/notes', (req, res) => {
 
-    res.json(note)
+    console.log({note})
+
+    res.json({note})
 });
 
 app.post('/api/notes', (req, res) => {
