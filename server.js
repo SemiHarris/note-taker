@@ -21,6 +21,14 @@ function createNewArray(body, notesArray) {
     return note;
   }
 
+function filterByQuery(query, notesArray) {
+    let filteredResults = notesArray;
+    if (query.id) {
+        filteredResults = filteredResults.filter(note => note.id === query.id);
+    }
+    return filteredResults
+}
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './Develop/public/index.html'));
 });
@@ -31,10 +39,13 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
+    console.log(req.query.length)
 
-    console.log({note})
 
-    res.json({note})
+console.log({note})
+
+ res.json({note})
+
 });
 
 app.post('/api/notes', (req, res) => {
